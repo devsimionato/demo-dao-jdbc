@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -13,11 +14,11 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		
+	Scanner sc = new Scanner(System.in);
+    /*	
 	SellerDao sellerDao = DaoFactory.createSellerDao();
 	//instanciou um SellerDaoJDBC
-	/*	
+		
 	System.out.println("=== TEST 1: seller findById ===");
 	Seller seller = sellerDao.findById(3);
 	System.out.println(seller);
@@ -52,14 +53,22 @@ public class Program {
 	sellerDao.update(seller);
 	//atualizando no banco de dados
 	System.out.println("Update completed!");
-	*/
+	
 	
 	System.out.println("\n=== TEST 3: seller delete ===");
 	System.out.println("Enter id for delete test: ");
 	int id = sc.nextInt();
 	sellerDao.deleteById(id);
 	System.out.println("Delete completed!");
-	
+	*/
+		
+	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	System.out.println("=== TEST 1: department insert ===");
+	Department newDep = new Department(5, "Toys");
+	dep.insert(newDep);
+	System.out.println("Inserted! New id = " + newDep.getId());
+		
+		
 	sc.close();
 	
 	}

@@ -20,6 +20,7 @@ Este projeto oferece as seguintes funcionalidades para as classes Seller e Depar
 - Excluir um vendedor por ID.
 - Listar todos os vendedores.
 - Encontrar um vendedor pelo ID.
+- Encontrar um vendedor pelo Departamento.
 
 Contribuindo
 
