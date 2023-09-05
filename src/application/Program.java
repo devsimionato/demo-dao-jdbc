@@ -7,6 +7,7 @@ import java.util.Scanner;
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.dao.SellerDao;
+import model.dao.impl.DepartmentDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -16,6 +17,8 @@ public class Program {
 		
 	Scanner sc = new Scanner(System.in);
     /*	
+    SELLER TESTS: 
+    
 	SellerDao sellerDao = DaoFactory.createSellerDao();
 	//instanciou um SellerDaoJDBC
 		
@@ -60,15 +63,23 @@ public class Program {
 	int id = sc.nextInt();
 	sellerDao.deleteById(id);
 	System.out.println("Delete completed!");
-	*/
+	
+	--------------------------------------------------------------------
+	Department TESTS:
 		
-	DepartmentDao dep = DaoFactory.createDepartmentDao();	
 	System.out.println("=== TEST 1: department insert ===");
 	Department newDep = new Department(5, "Toys");
 	dep.insert(newDep);
 	System.out.println("Inserted! New id = " + newDep.getId());
-		
-		
+    */
+	
+	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	System.out.println("=== TEST 2: department findAll ===");
+	List<Department> list = dep.findAll();
+	for (Department obj : list) {
+		System.out.println(obj);
+	}
+	
 	sc.close();
 	
 	}
