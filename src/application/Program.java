@@ -71,14 +71,19 @@ public class Program {
 	Department newDep = new Department(5, "Toys");
 	dep.insert(newDep);
 	System.out.println("Inserted! New id = " + newDep.getId());
-    */
+    
 	
-	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	
 	System.out.println("=== TEST 2: department findAll ===");
 	List<Department> list = dep.findAll();
 	for (Department obj : list) {
 		System.out.println(obj);
-	}
+	}*/
+	
+	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	System.out.println("=== TEST 3: department findById ===");
+	Department newdep = dep.findById(2);
+	System.out.println(newdep);
 	
 	sc.close();
 	
