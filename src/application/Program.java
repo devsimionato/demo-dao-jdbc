@@ -83,16 +83,22 @@ public class Program {
 	System.out.println("=== TEST 3: department findById ===");
 	Department newdep = dep.findById(2);
 	System.out.println(newdep);
-	*/
 	
-	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	
+
 	System.out.println("=== TEST 4: department update ===");
 	Department newdep = dep.findById(1);
 	newdep.setName("Shoes");
 	dep.update(newdep);
 	System.out.println("Update completed!");
+	*/
 	
-	
+	System.out.println("=== TEST 5: department deleteById ===");
+	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	System.out.println("Enter id for delete test: ");
+	int id = sc.nextInt();
+	dep.deleteById(id);
+	System.out.println("Delete completed!");
 	sc.close();
 	
 	}

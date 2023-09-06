@@ -10,6 +10,7 @@ import java.util.List;
 
 import db.DB;
 import db.DbException;
+import db.DbIntegrityException;
 import model.dao.DepartmentDao;
 import model.entities.Department;
 
@@ -98,8 +99,28 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-
+		PreparedStatement st = null;
+		try {
+			if (departmentExists(id)) {
+			
+			st = conn.prepareStatement("DELETE FROM department WHERE Id = ?");
+			
+			st.setInt(1, id);
+			
+			st.executeUpdate();
+			}
+			else throw new DbException("This department does not exists.");
+		}
+		catch (SQLException e) {
+			throw new DbIntegrityException(e.getMessage());
+			/*DbIntegrityException representa uma exceção relacionada à integridade de dados 
+			 * em um banco de dados, como uma tentativa de inserir, atualizar ou excluir registros
+			 * que violaria a integridade referencial ou outras restrições definidas no banco de dados.
+			 */
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
