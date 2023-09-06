@@ -78,12 +78,20 @@ public class Program {
 	List<Department> list = dep.findAll();
 	for (Department obj : list) {
 		System.out.println(obj);
-	}*/
+	}
 	
-	DepartmentDao dep = DaoFactory.createDepartmentDao();	
 	System.out.println("=== TEST 3: department findById ===");
 	Department newdep = dep.findById(2);
 	System.out.println(newdep);
+	*/
+	
+	DepartmentDao dep = DaoFactory.createDepartmentDao();	
+	System.out.println("=== TEST 4: department update ===");
+	Department newdep = dep.findById(1);
+	newdep.setName("Shoes");
+	dep.update(newdep);
+	System.out.println("Update completed!");
+	
 	
 	sc.close();
 	
